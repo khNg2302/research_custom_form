@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --space-x: 0.5rem;
+  --space-y: 1rem;
+  --border-radius: 0.5rem;
+  --text-size: 1.6rem;
+  --border-primary-width: 1.5px;
+  --color: #414141;
+  --border: var(--border-primary-width) solid var(--color);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  transition: 0.3s all;
+}
+
+html,
+body {
+  height: 100%;
+  font-size: 62.5%;
+}
+
+[data-theme="dark"] {
+  --app-background-color: #000;
+  --color: #777;
+  --input-color: ;
+  --input-background-color: #222222;
+  --border: var(--border-primary-width) solid var(--input-background-color);
+}
+
+[data-theme="light"] {
+  --app-background-color: #fff;
+  --color: #414141;
+  --input-background-color: #fff;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+a,p,label,div{
+  font-size: var(--text-size);
+}
+
+a {
+  text-decoration: none;
+  color:  var(--color);
+}
+
+button {
+  padding: var(--space-y) var(--space-x);
+  font-size: var(--text-size);
+  cursor: pointer;
+  border: var(--border-witdth) solid;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+}
+
+.app-page {
+  background-color: var(--app-background-color);
+  color: var(--color);
+  height: 100%;
+}
+
+.input-field {
+  font-size: 1.8rem;
+}
+
+.input-field input {
+  margin-top: var(--space-x);
+  color: var(--color);
+  font-size: 1.6rem;
+  background-color: var(--input-background-color);
+  border: var(--border);
+  padding: var(--space-y) var(--space-x);
+  border-radius: var(--border-radius);
+  width: 100%;
+  outline: none;
+}
+
+.box {
+  padding: var(--space-y) var(--space-x);
+  gap: calc(3 * var(--space-y)) calc(3 * var(--space-x));
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.flex-col-center {
+  align-items: center;
+}
+
+.button-primary {
+  background-color: #176fd3;
+  color: #ffffff;
+  border-color: #176fd3;
+}
