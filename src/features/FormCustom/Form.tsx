@@ -17,10 +17,11 @@ const Form = ({ data, custom_fields, ...props }: FormProps) => {
     changeStatus("validating");
   };
 
-  const handleFocusField = (indexField:number) => {
-    const focus = props.handleFocus as any
-    focus(indexField)
-  }
+  const handleFocusField = (indexField: number) => {
+    console.log(indexField);
+    const focus = props.handleFocus as any;
+    focus(indexField);
+  };
 
   return (
     <form>
@@ -38,20 +39,17 @@ const Form = ({ data, custom_fields, ...props }: FormProps) => {
             {...props}
             label={item.label}
             placeholder={item.placeholder}
-            key={item.field_name}
+            key={item.id}
             name={item.field_name}
             value={data[item.field_name]}
             handleChange={props.handleChange}
             lastField={index === custom_fields.length - 1}
             index={index}
-            handleFocus={()=>handleFocusField(index)}
+            handleFocus={() => handleFocusField(index)}
           />
         );
       })}
-      <Button
-        label="Submit"
-        onClick={handleSubmit}
-      />
+      <Button label="Submit" onClick={handleSubmit} />
     </form>
   );
 };

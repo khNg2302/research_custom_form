@@ -109,6 +109,11 @@ button {
   align-items: center;
 }
 
+.flex-box{
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .button-primary {
   background-color: #176fd3;
   color: #ffffff;

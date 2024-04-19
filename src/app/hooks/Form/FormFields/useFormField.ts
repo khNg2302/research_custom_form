@@ -68,6 +68,7 @@ const useFormField = ({
   );
 
   const hanleEventChange = (e: ChangeEvent<any>) => {
+    if (!e.target.name) return;
     handleChange({ name: e.target.name, value: e.target.value });
   };
 
@@ -75,7 +76,7 @@ const useFormField = ({
     switch (status) {
       case "validating":
       case "invalid":
-        setErrorMessage("")
+        setErrorMessage("");
         onValid(handleValid(value));
         break;
       case "null":

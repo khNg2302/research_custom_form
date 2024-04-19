@@ -9,6 +9,7 @@ const FieldSelection = ({
 }: {
   handleAddCustomField: HandleAddCustomField;
 }) => {
+
   const customFields = useRef<FieldTypeSelect[]>([
     {
       name: "Input",
@@ -19,6 +20,7 @@ const FieldSelection = ({
       },
     },
     {
+
       name: "Select",
       valueCustomField: {
         field_name: "",

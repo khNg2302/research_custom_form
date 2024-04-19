@@ -9,6 +9,8 @@ import {
 } from "@/app/types/ObjectField";
 import { useCallback, useEffect, useState } from "react";
 
+let id = Math.random() *10
+
 const useForm = <T>({ initialDefault, handleSubmit }: FormProps<T>) => {
   const [data, setData] = useState<T>(initialDefault);
   const [status, setStatus] = useState<Status>("null");
@@ -26,6 +28,7 @@ const useForm = <T>({ initialDefault, handleSubmit }: FormProps<T>) => {
     newData[indexObject] = {
       ...newData[indexObject],
       [name]: value,
+      id: id++
     };
     setData(newData as T);
   };
