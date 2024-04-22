@@ -15,7 +15,7 @@ const InputCustom = ({ ...props }: InputFieldProps) => {
         {...props}
         label={props.label || 'Label'}
         name={props.name}
-        value={props.value || ""}
+        value={props.value}
         onChange={hanleEventChange}
         onFocus={props.handleFocus}
       />

@@ -1,3 +1,3 @@
-type Fields = 'input' | 'select'
+type Fields = 'input' | 'select' | 'checkbox' | 'multiSelect'
 
 export default Fields

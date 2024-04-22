@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
   --space-x: 0.5rem;
   --space-y: 1rem;
@@ -43,13 +44,16 @@ h1 {
   font-size: 2.5rem;
 }
 
-a,p,label,div{
+a,
+p,
+label,
+div {
   font-size: var(--text-size);
 }
 
 a {
   text-decoration: none;
-  color:  var(--color);
+  color: var(--color);
 }
 
 button {
@@ -67,11 +71,13 @@ button {
   height: 100%;
 }
 
-.input-field {
+.input-field,
+.select-field {
   font-size: 1.8rem;
 }
 
-.input-field input {
+.input-field input,
+.select-field select {
   margin-top: var(--space-x);
   color: var(--color);
   font-size: 1.6rem;
@@ -81,6 +87,30 @@ button {
   border-radius: var(--border-radius);
   width: 100%;
   outline: none;
+}
+
+.checkbox-field input {
+  margin: 0;
+
+}
+
+.checkbox-field h3 {
+  line-height: var(--text-size);;
+
+}
+
+.checkbox-field{
+  display: flex;
+  align-items: center;
+  gap: calc(3 * var(--space-y)) calc(3 * var(--space-x));
+}
+
+.gap {
+  gap: calc(3 * var(--space-y)) calc(3 * var(--space-x));
+}
+
+.gap-inner {
+  gap: calc(1 * var(--space-y)) calc(1 * var(--space-x));
 }
 
 .box {
@@ -105,11 +135,15 @@ button {
   justify-content: center;
 }
 
+.items-center{
+  align-items: center;
+}
+
 .flex-col-center {
   align-items: center;
 }
 
-.flex-box{
+.flex-box {
   display: flex;
   flex-wrap: wrap;
 }
@@ -119,3 +153,5 @@ button {
   color: #ffffff;
   border-color: #176fd3;
 }
+
+@import "./styles/properties-custom-form.css";

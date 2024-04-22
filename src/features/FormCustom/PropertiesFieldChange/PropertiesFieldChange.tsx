@@ -1,6 +1,9 @@
 import CustomFields from "@/app/types/Form/CustomField";
 import HandleChange from "@/app/types/Form/HandleChange";
-import Input from "@/components/Form-Custom/Input";
+
+import OptionsSelect from "./OptionsSelect";
+import Input from "@/components/Input";
+import Button from "@/components/Button";
 
 const PropertiesFieldChange = ({
   customField,
@@ -10,7 +13,8 @@ const PropertiesFieldChange = ({
   handleChange: HandleChange;
 }) => {
   return (
-    <div>
+    <div className="flex-col box properties-custom-form ">
+      <Button className="button-toggle">%</Button>
       {customField && (
         <>
           <Input
@@ -33,6 +37,14 @@ const PropertiesFieldChange = ({
               name="placeholder"
               value={customField.placeholder}
               label="Placeholder"
+              handleChange={handleChange}
+            />
+          )}
+
+          {customField.options !== undefined && (
+            <OptionsSelect
+              name="options"
+              value={customField.options}
               handleChange={handleChange}
             />
           )}

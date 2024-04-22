@@ -3,7 +3,7 @@ import FormFieldProps from "@/app/types/Form/FormField";
 import HandleSetStatus from "@/app/types/Form/HandleSetStatus";
 import { ObjectField } from "@/app/types/ObjectField";
 import Button from "@/components/Button";
-import Input from "@/components/Form-Custom/Input";
+import Input from "@/components/Input";
 import FormFields from "@/consts/FormField";
 
 interface FormProps extends Omit<FormFieldProps, "value"> {
@@ -18,13 +18,12 @@ const Form = ({ data, custom_fields, ...props }: FormProps) => {
   };
 
   const handleFocusField = (indexField: number) => {
-    console.log(indexField);
     const focus = props.handleFocus as any;
     focus(indexField);
   };
 
   return (
-    <form>
+    <form className="flex-col box"> 
       <Input
         status={props.status}
         name="customer_name"
@@ -33,19 +32,21 @@ const Form = ({ data, custom_fields, ...props }: FormProps) => {
         handleChange={props.handleChange}
       />
       {custom_fields.map((item, index) => {
-        const Field = FormFields[item.type];
+        const Field = FormFields[item.type] as any;
+        console.log(data[item.field_name])
         return (
           <Field
             {...props}
             label={item.label}
-            placeholder={item.placeholder}
             key={item.id}
             name={item.field_name}
-            value={data[item.field_name]}
+            value={data[item.field_name]||''}
             handleChange={props.handleChange}
             lastField={index === custom_fields.length - 1}
             index={index}
             handleFocus={() => handleFocusField(index)}
+            //select
+            options={item.options}
           />
         );
       })}

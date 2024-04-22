@@ -1,9 +1,13 @@
-import InputCustom from "@/components/Form-Custom/Input";
-import SelectCustom from "@/components/Form-Custom/Select";
+import Checkbox from "@/components/Checkbox";
+import Input from "@/components/Input";
+import MultiSelect from "@/components/MultiSelect";
+import Select from "@/components/Select";
 
 const FormFields = {
-  input: InputCustom,
-  select: SelectCustom,
+  input: Input,
+  select: Select,
+  checkbox:Checkbox,
+  multiSelect: MultiSelect
 };
 
 export default FormFields;

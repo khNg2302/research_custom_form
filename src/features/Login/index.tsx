@@ -1,5 +1,6 @@
 "use client";
 import { Creditial, login } from "@/actions/login";
+import HandleChange from "@/app/types/HandleChange";
 import AsyncButton from "@/components/AsyncButton";
 import Input from "@/components/Input";
 import Link from "next/link";
@@ -13,8 +14,8 @@ const Login = ({ searchParams }: any) => {
   });
   const router = useRouter()
 
-  const handleOnChange = (e:ChangeEvent<any>)=>{
-    setFormData({...formData, [e.target.name]: e.target.value})
+  const handleOnChange:HandleChange = ({name,value})=>{
+    setFormData({...formData, [name]: value})
   }
 
   const handleLogin = async () => {
@@ -30,14 +31,14 @@ const Login = ({ searchParams }: any) => {
         label="Tên người dùng"
         name="username"
         value={formData.username}
-        onChange={handleOnChange}
+        handleChange={handleOnChange}
       />
       <Input
         theme={searchParams.theme}
         label="Mật khẩu"
         name="password"
         value={formData.password}
-        onChange={handleOnChange}
+        handleChange={handleOnChange}
       />
       <AsyncButton
         theme={searchParams.theme}

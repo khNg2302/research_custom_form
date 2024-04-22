@@ -13,9 +13,9 @@ const SelectCustom = ({ ...props }: SelectFieldProps) => {
         name={props.name}
         onChange={hanleEventChange}
         {...props}
-        value={props.value}
+
         placeholder={props.placeholder}
-        onFocus={()=>props.handleFocus(props.index)}
+        onFocus={() => props.handleFocus(props.index)}
       />
       <p>{errorMessage}</p>
     </>

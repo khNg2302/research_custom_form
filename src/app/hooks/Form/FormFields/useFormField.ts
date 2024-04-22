@@ -69,6 +69,7 @@ const useFormField = ({
 
   const hanleEventChange = (e: ChangeEvent<any>) => {
     if (!e.target.name) return;
+
     handleChange({ name: e.target.name, value: e.target.value });
   };
 
@@ -89,6 +90,7 @@ const useFormField = ({
   return {
     errorMessage,
     hanleEventChange,
+    handleChange,
   };
 };
 

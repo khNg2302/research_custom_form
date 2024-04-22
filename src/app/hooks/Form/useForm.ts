@@ -4,12 +4,12 @@ import HandleChangeArrayObject from "@/app/types/Form/HandleChangeArrayObject";
 import Status from "@/app/types/Form/Status";
 import {
   ArrayObjectField,
-  FormData,
   ObjectField,
 } from "@/app/types/ObjectField";
+import updateArrayObject from "@/utils/updateArrayObject";
 import { useCallback, useEffect, useState } from "react";
 
-let id = Math.random() *10
+let id = Math.random() * 10;
 
 const useForm = <T>({ initialDefault, handleSubmit }: FormProps<T>) => {
   const [data, setData] = useState<T>(initialDefault);
@@ -24,12 +24,7 @@ const useForm = <T>({ initialDefault, handleSubmit }: FormProps<T>) => {
     value,
     indexObject,
   }) => {
-    const newData = [...(data as ArrayObjectField)];
-    newData[indexObject] = {
-      ...newData[indexObject],
-      [name]: value,
-      id: id++
-    };
+    const newData = updateArrayObject(data as any, { name, value, indexObject });
     setData(newData as T);
   };
 
@@ -43,9 +38,9 @@ const useForm = <T>({ initialDefault, handleSubmit }: FormProps<T>) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
-  const handleSetStatus = (status:Status) => {
-    setStatus(status)
-  } 
+  const handleSetStatus = (status: Status) => {
+    setStatus(status);
+  };
 
   useEffect(() => {
     switch (status) {

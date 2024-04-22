@@ -1,3 +1,4 @@
+import CustomFields from "@/app/types/Form/CustomField";
 import FormValues from "./FormValue";
 import HandleChange from "./HandleChange";
 import HandleSetStatus from "./HandleSetStatus";
@@ -10,7 +11,7 @@ type FormFieldProps = {
   lastField?: boolean;
   value: FormValues;
   handleChange: HandleChange;
-  handleFocus?: (indexField:number) => void;
+  handleFocus?: (indexField: number) => void;
   handleSetStatus?: HandleSetStatus;
 };
 

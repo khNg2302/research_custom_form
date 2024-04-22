@@ -4,7 +4,7 @@ import Form from "./Form";
 import FieldSelection from "./FieldSelection";
 import CustomFields from "@/app/types/Form/CustomField";
 import HandleSubmit from "@/app/types/Form/HandleSubmit";
-import PropertiesFieldChange from "./PropertiesFieldChange";
+import PropertiesFieldChange from "./PropertiesFieldChange/PropertiesFieldChange";
 import HandleChange from "@/app/types/Form/HandleChange";
 import { useState } from "react";
 
@@ -52,19 +52,23 @@ const FormCustom = () => {
     setCustomFieldsIndex(customFieldsIndex);
   };
   return (
-    <div className="flex flex-row box justify-between">
+    <div>
       <FieldSelection handleAddCustomField={handleAddArrayObjectChangeEvent} />
-      <Form
-        {...props}
-        handleFocus={handleFocusFieldForm}
-        custom_fields={customFields as CustomFields[]}
-        data={data as ObjectField}
-        handleChange={handleObjectFieldsChangeEvent}
-      />
-      <PropertiesFieldChange
-        customField={customFields[customFieldsIndex as number] as CustomFields}
-        handleChange={handleSpecificCustomFieldChange}
-      />
+      <div className="" style={{position:'relative'}}>
+        <Form
+          {...props}
+          handleFocus={handleFocusFieldForm}
+          custom_fields={customFields as CustomFields[]}
+          data={data as ObjectField}
+          handleChange={handleObjectFieldsChangeEvent}
+        />
+        <PropertiesFieldChange
+          customField={
+            customFields[customFieldsIndex as number] as CustomFields
+          }
+          handleChange={handleSpecificCustomFieldChange}
+        />
+      </div>
     </div>
   );
 };

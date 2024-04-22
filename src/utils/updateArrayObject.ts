@@ -1,7 +1,6 @@
 import HandleChangeArrayObjectProps from "@/app/types/HandeChangeArrayObjectProps";
 
 const updateArrayObject = (
-
   list: any[],
   { name, value, indexObject }: HandleChangeArrayObjectProps
 ) => {

@@ -25,7 +25,26 @@ const FieldSelection = ({
       valueCustomField: {
         field_name: "",
         type: "select",
-        placeholder: "",
+        label: "",
+        options:[]
+      },
+    },
+    {
+
+      name: "Checkbox",
+      valueCustomField: {
+        field_name: "",
+        type: "checkbox",
+        label: ""
+      },
+    },
+    {
+
+      name: "Multi Select",
+      valueCustomField: {
+        field_name: "",
+        type: "multiSelect",
+        label: "",
         options:[]
       },
     },
