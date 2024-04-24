@@ -1,11 +1,93 @@
+"use client";
 import AppPage, { AppTheme } from "@/components/AppPage";
-import ReportCustom from "@/features/ReportCustom";
+import Report from "../types/Report/Report";
+import ReportCustom from "@/features/ReportCustom/ReportCustom";
+import { useState } from "react";
+import ReportItemSelection from "@/features/ReportCustom/ReportItemSelection/ReportItemSelection";
+
+const report: Report = {
+  1: [
+    {
+      uuid: "11",
+      layoutId: 1,
+      type: "text",
+      props: {
+        content: "text 11",
+      },
+    },
+    {
+      uuid: "12",
+      layoutId: 1,
+      type: "layout",
+      props: {
+        id: 2,
+      },
+    },
+  ],
+  2: [
+    {
+      uuid: "21",
+      layoutId: 2,
+      type: "text",
+      props: {
+        content: "text 21",
+      },
+    },
+    {
+      uuid: "22",
+      layoutId: 2,
+      type: "image",
+      props: {
+        url: "/image.png",
+      },
+    },
+    {
+      uuid: "23",
+      layoutId: 2,
+      type: "layout",
+      props: {
+        id: 3,
+      },
+    },
+  ],
+  3: [
+    {
+      uuid: "31",
+      layoutId: 3,
+      type: "text",
+      props: {
+        content: "text 31",
+      },
+    },
+    {
+      uuid: "32",
+      layoutId: 3,
+      type: "image",
+      props: {
+        url: "/image.png",
+      },
+    },
+  ],
+};
+
+
 
 const CustomReport = ({ searchParams }: { searchParams: AppTheme }) => {
+  const [reportCustomState, setReportCustomState] = useState<Report>(report);
+  const [activeLayoutId, setActiveLayoutId] = useState(1)
   return (
     <AppPage theme={searchParams.theme}>
       <h1>Custom report</h1>
-      <ReportCustom />
+      <ReportItemSelection />
+      <ReportCustom
+        reportValues={{}}
+        activeLayoutId={activeLayoutId}
+        reportCustomState={reportCustomState}
+        layoutId={1}
+        layoutItems={reportCustomState[1]}
+        handleChangeCustomReport={setReportCustomState}
+        handleSetActiveLayoutId={setActiveLayoutId}
+      />
     </AppPage>
   );
 };

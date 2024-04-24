@@ -154,4 +154,9 @@ button {
   border-color: #176fd3;
 }
 
+.border{
+  border: var(--border)
+}
+
 @import "./styles/properties-custom-form.css";
+@import "./styles/custom-report.css"
