@@ -7,21 +7,21 @@ const ReportLayoutRender = ({
   ...res
 }: ReportItemLayoutProps) => {
   const render = () => {
-    return layoutItems.map((item) => {
+    return layoutItems.map((item, index) => {
       const Comp = ReportItems[item.type]() as any;
 
       return (
         <Comp
           key={item.uuid}
-          {...item.props}
           //Comp is layout item
           {...res}
+          indexLayout={index}
           handleSetActiveLayoutId={res.handleSetActiveLayoutId}
           activeLayoutId={res.activeLayoutId}
           layoutId={item.props.id}
           reportCustomState={reportCustomState}
           layoutItems={reportCustomState[item.props.id]}
-          layoutProps={item.props}
+          layoutProps={item}
           parentLayoutItems={layoutItems}
         />
       );

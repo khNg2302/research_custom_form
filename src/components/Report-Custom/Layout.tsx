@@ -2,30 +2,34 @@ import DraggableComponent from "@/app/hooks/Report/DraggableComponent";
 import ReportItemLayout from "@/app/hooks/Report/ReportItemLayout";
 import ReportLayoutRender from "@/app/hooks/Report/ReportLayoutRender";
 import ReportItemLayoutProps from "@/app/types/Report/ReportItemLayoutProps";
+import DropArea from "./DropArea";
+import ToolItemReport from "./ToolItemReport";
 
 const Layout = ({ ...props }: ReportItemLayoutProps) => {
-  const { handleDrop, handleSetActiveLayoutId } = ReportItemLayout({
+  const {
+    handleDrop,
+    handleSetActiveLayoutId,
+    handleDragStart,
+    handleDeleteLayout,
+  } = ReportItemLayout({
     ...props,
   });
-  const { handleDragStart } = DraggableComponent({
-    item: props.layoutProps,
-    parentLayoutItems: props.parentLayoutItems,
-  });
+
   const { render } = ReportLayoutRender({ ...props });
 
   return (
-    <div
-      style={{
-        minWidth: "200px",
-        borderColor: props.activeLayoutId === props.layoutId ? "red" : "black",
-      }}
-      className="flex-row box items-center gap border"
-      draggable
-      onDragStart={handleDragStart}
-      onDrop={handleDrop}
-      onDragOver={(e) => e.preventDefault()}
-    >
+    <div id={props.layoutId + ""} className={`flex-row report-layout`}>
+      <ToolItemReport
+        handleDelete={handleDeleteLayout}
+        handleDragStart={handleDragStart}
+      />
       {render()}
+      <DropArea
+        layoutId={props.layoutId}
+        activeLayoutId={props.activeLayoutId}
+        handleDrop={handleDrop}
+        handleSetActiveLayoutId={props.handleSetActiveLayoutId}
+      />
     </div>
   );
 };

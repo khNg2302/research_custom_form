@@ -2,6 +2,7 @@ import ImageReportItem from "@/app/types/Report/Item/ImageReportItem";
 import LayoutReportItem from "@/app/types/Report/Item/LayoutReportItem";
 import TextReportItem from "@/app/types/Report/Item/TextReportItem";
 import ItemReport from "@/app/types/Report/ItemReport";
+import Report from "@/app/types/Report/Report";
 import ReportLayoutProps from "@/app/types/Report/ReportLayoutProps";
 import deleteArrayObject from "@/utils/deleteArrayObject";
 import returnNewArray from "@/utils/returnNewArray";
@@ -65,11 +66,23 @@ const ReportLayout = ({
     };
   };
 
+  const addItemExchangedToActiveLayout = (
+    item: ItemExchange,
+    currentCustomReport: Report
+  ) => {
+    return {
+      [activeLayoutId as number]: returnNewArray(
+        currentCustomReport[activeLayoutId as number],
+        { ...item, layoutId: activeLayoutId }
+      ),
+    };
+  };
+
   const exChangeItem = (item: ItemExchange) => {
     handleChangeCustomReport((currentLayout) => ({
       ...currentLayout,
+      ...addItemExchangedToActiveLayout(item, currentLayout),
       ...deletedExchangedItemAtOldLayout(item),
-      ...newLayoutItems(item),
     }));
   };
 
@@ -79,6 +92,8 @@ const ReportLayout = ({
     const item = JSON.parse(e.dataTransfer.getData("item"));
 
     if (dropItemFormOtherLayout(item)) {
+      if (activeLayoutId === item.layoutId || activeLayoutId === item.props.id)
+        return;
       exChangeItem(item);
       return;
     }
@@ -87,6 +102,7 @@ const ReportLayout = ({
       ...currentLayout,
       ...newLayoutItems(item),
     }));
+    handleSetActiveLayoutId(null);
   };
 
   return {

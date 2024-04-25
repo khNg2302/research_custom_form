@@ -10,8 +10,8 @@ type ReportLayoutProps = {
   reportCustomState: Report;
   handleChangeCustomReport: Dispatch<SetStateAction<Report>>;
   layoutId: number;
-  activeLayoutId: number;
-  handleSetActiveLayoutId: (layoutId: number) => void;
+  activeLayoutId: number | null;
+  handleSetActiveLayoutId: (layoutId: number | null) => void;
   layoutItems: Array<ImageReportItem | TextReportItem | LayoutReportItem>;
 };
 

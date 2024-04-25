@@ -3,7 +3,8 @@ import ReportLayoutProps from "./ReportLayoutProps";
 
 interface ReportItemLayoutProps extends ReportLayoutProps {
   layoutProps: ItemReport;
-  parentLayoutItems: Array<any>
+  indexLayout: number;
+  parentLayoutItems: Array<any>;
 }
 
 export default ReportItemLayoutProps;

@@ -148,6 +148,10 @@ button {
   flex-wrap: wrap;
 }
 
+.flex-1 {
+  flex-grow: 1;
+}
+
 .button-primary {
   background-color: #176fd3;
   color: #ffffff;

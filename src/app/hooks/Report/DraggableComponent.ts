@@ -3,6 +3,7 @@ import { DragEvent } from "react";
 
 const DraggableComponent = ({ ...fields }: { [key: string]: any }) => {
   const handleDragStart = (e: DragEvent<HTMLDivElement>) => {
+    console.log({...fields})
     e.dataTransfer.setData("item", JSON.stringify({ ...fields }));
   };
 

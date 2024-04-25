@@ -20,7 +20,17 @@ const report: Report = {
       layoutId: 1,
       type: "layout",
       props: {
+        parentId:1,
         id: 2,
+      },
+    },
+    {
+      uuid: "13",
+      layoutId: 1,
+      type: "layout",
+      props: {
+        parentId:1,
+        id: 4,
       },
     },
   ],
@@ -34,18 +44,11 @@ const report: Report = {
       },
     },
     {
-      uuid: "22",
-      layoutId: 2,
-      type: "image",
-      props: {
-        url: "/image.png",
-      },
-    },
-    {
       uuid: "23",
       layoutId: 2,
       type: "layout",
       props: {
+        parentId:2,
         id: 3,
       },
     },
@@ -59,22 +62,22 @@ const report: Report = {
         content: "text 31",
       },
     },
+  ],
+  4: [
     {
-      uuid: "32",
-      layoutId: 3,
-      type: "image",
+      uuid: "41",
+      layoutId: 4,
+      type: "text",
       props: {
-        url: "/image.png",
+        content: "text 41",
       },
     },
   ],
 };
 
-
-
 const CustomReport = ({ searchParams }: { searchParams: AppTheme }) => {
   const [reportCustomState, setReportCustomState] = useState<Report>(report);
-  const [activeLayoutId, setActiveLayoutId] = useState(1)
+  const [activeLayoutId, setActiveLayoutId] = useState<null|number>(null);
   return (
     <AppPage theme={searchParams.theme}>
       <h1>Custom report</h1>
